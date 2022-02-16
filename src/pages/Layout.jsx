@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-  import { AppBar, Drawer, IconButton, List, ListItem, ListItemText} from "@mui/material";
+  import { AppBar, Drawer, IconButton, List, ListItem, ListItemText, Toolbar} from "@mui/material";
   import MenuIcon from '@mui/icons-material/Menu';
   import HomeIcon from '@mui/icons-material/Home';
-
+  import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 
 import { Link, Outlet} from "react-router-dom";
@@ -18,6 +18,11 @@ export default function DrawerComponent() {
         onClose={() => setOpenDrawer(false)}
       >
         <List>
+
+          <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+            <CloseOutlinedIcon />
+
+          </IconButton> {/*You can erase this part of the code, it was just for testing some functionality */}
          
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
@@ -36,17 +41,30 @@ export default function DrawerComponent() {
       <Outlet />
 
       <AppBar position="fixed" color="inherit">
-        <ListItem button to='/' component={Link}>
-        <HomeIcon />
 
 
-        </ListItem>
+        <Toolbar>
+        <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
+        <MenuIcon/>
+      </IconButton>
+
+      <IconButton  to='/' component={Link}> 
+      <HomeIcon />
+
+      </IconButton>
+      
+
+        </Toolbar>
+      
+
+        
+        
+
 
         
 
-      <IconButton onClick={() => setOpenDrawer(!openDrawer)}>
-        <MenuIcon/>
-      </IconButton>
+        
+
       
 
 
